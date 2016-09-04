@@ -23,33 +23,35 @@ int main(int argc, char *argv[])
                                 class_index = 2;
                 else if (strcmp(argv[1],"ECE462") == 0)
                                 class_index = 3;
-                else if (strcmp(argv[1],"FRENCH") == 0)
+                else if (strcmp(argv[1],"ECE311") == 0)
                                 class_index = 4;
+		else if (strcmp(argv[1],"CLCV114") == 0)
+				class_index = 5;
                 else if (strcmp(argv[1],"DUTCH") == 0)
-                                class_index = 5;
-                else if (strcmp(argv[1],"C/C++") == 0)
                                 class_index = 6;
-                else if (strcmp(argv[1],"LINUX") == 0)
+                else if (strcmp(argv[1],"C/C++") == 0)
                                 class_index = 7;
-                else if (strcmp(argv[1],"TCL/PERL") == 0)
+                else if (strcmp(argv[1],"LINUX") == 0)
                                 class_index = 8;
+                else if (strcmp(argv[1],"TCL/PERL") == 0)
+                                class_index = 9;
 		else
 		{ std::cout << "Invalid Class Name!\n";
 		  return 0;                            }
 
 	}
 
-	char* course_name[9] = {"ECE411", "ECE425","ECE329","ECE462","FRENCH",
+	char* course_name[10] = {"ECE411", "ECE425","ECE329","ECE462","ECE311","CLCV114",
 				"DUTCH","C/C++","LINUX","TCL/PERL"};	
 
-	int *memblock = new int[9];
+	int *memblock = new int[10];
 	std::ifstream file("data.bin", std::ios::binary);
 	if (file.is_open())
 	{
-		for (int i = 0; i < 9; i++)
-		file.read((char*)&memblock[i],4);
+		for (int i = 0; i < 10; i++)
+			file.read((char*)&memblock[i],4);
 	}
-	for (int i = 0; i < 9; i++)
+	for (int i = 0; i < 10; i++)
 		std::cout << course_name[i] << '\t' << 
 		(int)(memblock[i]/3600) <<" : " <<
 		(int)((memblock[i]%3600)/60) << " : " << 
@@ -77,7 +79,7 @@ int main(int argc, char *argv[])
 	else
 		memblock[class_index] -= int(result);
 
-	        for (int i = 0; i < 9; i++)
+	        for (int i = 0; i < 10; i++)
                 std::cout << course_name[i] << '\t' << 
                 (int)(memblock[i]/3600) <<" : " <<
                 (int)((memblock[i]%3600)/60) << " : " << 
@@ -85,7 +87,7 @@ int main(int argc, char *argv[])
 
 	std::ofstream myfile;
         myfile.open ("data.bin", std::ios::binary);
-        myfile.write((char*)memblock,36);
+        myfile.write((char*)memblock,40);
 
 	file.close();
 	myfile.close();
