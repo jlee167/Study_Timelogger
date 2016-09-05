@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
                                 class_index = 3;
                 else if (strcmp(argv[1],"ECE311") == 0)
                                 class_index = 4;
-		else if (strcmp(argv[1],"CLCV114") == 0)
+		else if (strcmp(argv[1],"CS431") == 0)
 				class_index = 5;
                 else if (strcmp(argv[1],"DUTCH") == 0)
                                 class_index = 6;
@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
 	}
 
-	char* course_name[10] = {"ECE411", "ECE425","ECE329","ECE462","ECE311","CLCV114",
+	char* course_name[10] = {"ECE411", "ECE425","ECE329","ECE462","ECE311","CS431",
 				"DUTCH","C/C++","LINUX","TCL/PERL"};	
 
 	int *memblock = new int[10];
