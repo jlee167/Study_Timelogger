@@ -15,43 +15,41 @@ int main(int argc, char *argv[])
 
 	else
 	{
-		if (strcmp(argv[1],"ECE411") == 0)
+		if (strcmp(argv[1],"ECE425") == 0)
 				class_index = 0;
-		else if (strcmp(argv[1],"ECE425") == 0 )
+		else if (strcmp(argv[1],"ECE329") == 0 )
                                 class_index = 1;
-                else if (strcmp(argv[1],"ECE329") == 0)
-                                class_index = 2;
                 else if (strcmp(argv[1],"ECE462") == 0)
+                                class_index = 2;
+                else if (strcmp(argv[1],"CS431") == 0)
                                 class_index = 3;
-                else if (strcmp(argv[1],"ECE311") == 0)
-                                class_index = 4;
-		else if (strcmp(argv[1],"CS431") == 0)
-				class_index = 5;
                 else if (strcmp(argv[1],"DUTCH") == 0)
-                                class_index = 6;
-                else if (strcmp(argv[1],"C/C++") == 0)
-                                class_index = 7;
+                                class_index = 4;
+		else if (strcmp(argv[1],"C/C++") == 0)
+				class_index = 5;
                 else if (strcmp(argv[1],"LINUX") == 0)
-                                class_index = 8;
+                                class_index = 6;
                 else if (strcmp(argv[1],"TCL/PERL") == 0)
-                                class_index = 9;
+                                class_index = 7;
+                else if (strcmp(argv[1],"JAVA") == 0)
+                                class_index = 8;
 		else
 		{ std::cout << "Invalid Class Name!\n";
 		  return 0;                            }
 
 	}
 
-	char* course_name[10] = {"ECE411", "ECE425","ECE329","ECE462","ECE311","CS431",
-				"DUTCH","C/C++","LINUX","TCL/PERL"};	
+	char* course_name[9] = {"ECE425", "ECE329","ECE462","CS431","DUTCH","C/C++",
+				"LINUX","TCL/PERL","JAVA"};	
 
-	int *memblock = new int[10];
+	int *memblock = new int[9];
 	std::ifstream file("data.bin", std::ios::binary);
 	if (file.is_open())
 	{
-		for (int i = 0; i < 10; i++)
+		for (int i = 0; i < 9; i++)
 			file.read((char*)&memblock[i],4);
 	}
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < 9; i++)
 		std::cout << course_name[i] << '\t' << 
 		(int)(memblock[i]/3600) <<" : " <<
 		(int)((memblock[i]%3600)/60) << " : " << 
@@ -79,7 +77,7 @@ int main(int argc, char *argv[])
 	else
 		memblock[class_index] -= int(result);
 
-	        for (int i = 0; i < 10; i++)
+	        for (int i = 0; i < 9; i++)
                 std::cout << course_name[i] << '\t' << 
                 (int)(memblock[i]/3600) <<" : " <<
                 (int)((memblock[i]%3600)/60) << " : " << 
